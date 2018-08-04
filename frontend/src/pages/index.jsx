@@ -11,6 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import ClaimList from './ClaimList';
 
 // NEVER store private keys in any source code in your real life development
 // This is for demo purposes only!
@@ -26,14 +27,21 @@ const accounts = [
 
 // set up styling classes using material-ui "withStyles"
 const styles = theme => ({
+  banner: {
+    backgroundColor: '#3cc47c',
+    padding: '20px 0 60px',
+    marginBottom: -90,
+  },
   name: {
     textAlign: 'center',
     fontSize: 30,
-    marginTop: 20,
+    color: 'white'
   },
   balance: {
     textAlign: 'center',
-    fontSize: 100,
+    fontSize: 130,
+    color: 'white',
+    fontWeight: 300
   },
   card: {
     margin: 20,
@@ -183,80 +191,17 @@ class Index extends Component {
     const { noteTable, balance } = this.state;
     const { classes } = this.props;
 
-    // generate each note as a card
-    const generateCard = (key, timestamp, user, note) => (
-      <Card className={classes.card} key={key}>
-        <CardContent>
-          <Typography variant="headline" component="h2">
-            {user}
-          </Typography>
-          <Typography style={{fontSize:12}} color="textSecondary" gutterBottom>
-            {new Date(timestamp*1000).toString()}
-          </Typography>
-          <Typography component="pre">
-            {note}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-    let noteCards = noteTable.map((row, i) =>
-      generateCard(i, row.timestamp, row.user, row.note));
-
     return (
       <div>
-        <AppBar position="static" color="default">
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Carbon Credit Token
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        {noteCards}
-        <Typography className={classes.name}>
-          Jack
-        </Typography>
-        <Typography className={classes.balance}>
-          {balance}
-        </Typography>
-        <Paper className={classes.paper}>
-          <form onSubmit={this.handleFormEvent}>
-            <TextField
-              name="account"
-              autoComplete="off"
-              label="Account"
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              name="privateKey"
-              autoComplete="off"
-              label="Private key"
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              name="note"
-              autoComplete="off"
-              label="Note (Optional)"
-              margin="normal"
-              multiline
-              rows="10"
-              fullWidth
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.formButton}
-              type="submit">
-              Add / Update note
-            </Button>
-          </form>
-        </Paper>
-        <pre className={classes.pre}>
-          Below is a list of pre-created accounts information for add/update note:
-          <br/><br/>
-          accounts = { JSON.stringify(accounts, null, 2) }
-        </pre>
+        <div className={classes.banner}>
+          <Typography className={classes.name}>
+            Jack's account balance
+          </Typography>
+          <Typography className={classes.balance}>
+            100 CCT
+          </Typography>
+        </div>
+        <ClaimList />
       </div>
     );
   }
