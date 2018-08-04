@@ -122,7 +122,10 @@ class Index extends Component {
       "scope": "notechainacc",  // scope of the table
       "table": "notestruct",    // name of the table as specified by the contract abi
       "limit": 100,
-    }).then(result => this.setState({ noteTable: result.rows }));
+    }).then(result => {
+      console.log(result);
+      this.setState({ noteTable: result.rows });
+    });
   }
 
   recordCarbonPositiveAction() {
@@ -143,12 +146,12 @@ class Index extends Component {
   getBalance() {
     const eos = Eos();
     eos.getCurrencyBalance({
-      "code": "eosio",
-      "account": accounts[0].name,
-      "symbol": "EOS",
+      "code": "tokenacct",
+      "account": "personacc",
+      "symbol": "CCT",
     }).then(result => {
       console.log(result);
-      this.setState({ balance: result.rows });
+      this.setState({ balance: result[0] });
     });
   }
 
@@ -158,7 +161,7 @@ class Index extends Component {
   }
 
   render() {
-    const { noteTable } = this.state;
+    const { noteTable, balance } = this.state;
     const { classes } = this.props;
 
     // generate each note as a card
@@ -194,7 +197,7 @@ class Index extends Component {
           Jack
         </Typography>
         <Typography className={classes.balance}>
-          100 CCT
+          {balance}
         </Typography>
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>
