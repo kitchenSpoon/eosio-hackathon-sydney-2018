@@ -9,7 +9,7 @@ cleos() {
 # cd into script's folder
 cd "$(dirname "$0")"
 
-echo "=== start create participants in blockchain ==="
+echo "=== start create people in blockchain ==="
 
 # download jq for json reader, we use jq here for reading the json file ( accounts.json )
 #mkdir -p ~/bin && curl -sSL -o ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && chmod +x ~/bin/jq && export PATH=$PATH:~/bin
@@ -20,12 +20,9 @@ echo "=== start create participants in blockchain ==="
 # NEVER store the private key in any source code in your real life developmemnt
 # This is just for demo purpose
 
-jq -c '.[]' participants.json | while read i; do
+jq -c '.[]' people.json | while read i; do
   name=$(jq -r '.name' <<< "$i")
   pub=$(jq -r '.publicKey' <<< "$i")
-
-  echo "CREATING participants"
-  echo "$name $pub"
 
   # to simplify, we use the same key for owner and active key of each account
   cleos create account eosio $name $pub $pub

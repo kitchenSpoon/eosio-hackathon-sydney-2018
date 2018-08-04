@@ -3,19 +3,19 @@
 using namespace eosio;
 
 // Replace the contract class name when you start your own project
-class participant : public eosio::contract {
+class person : public eosio::contract {
   private:
     bool isnewuser( account_name user ) {
-      participanttable participantobj(_self, _self);
+      persontable personobj(_self, _self);
       // get object by secordary key
-      auto participants = participantobj.get_index<N(getbyuser)>();
-      auto participant = participants.find(user);
+      auto people = personobj.get_index<N(getbyuser)>();
+      auto person = people.find(user);
 
-      return participant == participants.end();
+      return person == people.end();
     }
 
-    /// @abi table participants
-    struct participantstruct {
+    /// @abi table
+    struct personstruct {
       uint64_t      prim_key;  // primary key
       account_name  user;      // account name for the user
       std::string   note;      // the note message
@@ -28,9 +28,9 @@ class participant : public eosio::contract {
     };
 
     // create a multi-index table and support secondary key
-    typedef eosio::multi_index< N(participantstruct), participantstruct,
-      indexed_by< N(getbyuser), const_mem_fun<participantstruct, account_name, &participantstruct::get_by_user> >
-      > participanttable;
+    typedef eosio::multi_index< N(personstruct), personstruct,
+      indexed_by< N(getbyuser), const_mem_fun<personstruct, account_name, &personstruct::get_by_user> >
+      > persontable;
 
   public:
     using contract::contract;
@@ -40,7 +40,7 @@ class participant : public eosio::contract {
       // to sign the action with the given account
       require_auth( _user );
 
-      participanttable obj(_self, _self); // code, scope
+      persontable obj(_self, _self); // code, scope
 
       // create new / update note depends whether the user account exist or not
       if (isnewuser(_user)) {
@@ -53,10 +53,10 @@ class participant : public eosio::contract {
         });
       } else {
         // get object by secordary key
-        auto participants = obj.get_index<N(getbyuser)>();
-        auto &participant = participants.get(_user);
+        auto people = obj.get_index<N(getbyuser)>();
+        auto &person = people.get(_user);
         // update object
-        obj.modify( participant, _self, [&]( auto& address ) {
+        obj.modify( person, _self, [&]( auto& address ) {
           address.note        = _note;
           address.timestamp   = now();
         });
@@ -66,4 +66,4 @@ class participant : public eosio::contract {
 };
 
 // specify the contract name, and export a public action: update
-EOSIO_ABI( participant, (update) )
+EOSIO_ABI( person, (update) )

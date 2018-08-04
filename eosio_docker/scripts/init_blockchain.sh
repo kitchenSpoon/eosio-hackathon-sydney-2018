@@ -36,7 +36,7 @@ echo "=== setup wallet: notechainwal ==="
 
 # create account for notechainacc with above wallet's public keys
 ./cleos create account eosio notechainacc EOS6PUh9rs7eddJNzqgqDx1QrspSHLRxLMcRdwHZZRL4tpbtvia5B EOS8BCgapgYA2L4LJfCzekzeSr3rzgSTUXRXwNi8bNRoz31D14en9
-./cleos create account eosio partacc EOS6PUh9rs7eddJNzqgqDx1QrspSHLRxLMcRdwHZZRL4tpbtvia5B EOS8BCgapgYA2L4LJfCzekzeSr3rzgSTUXRXwNi8bNRoz31D14en9
+./cleos create account eosio personacc EOS6PUh9rs7eddJNzqgqDx1QrspSHLRxLMcRdwHZZRL4tpbtvia5B EOS8BCgapgYA2L4LJfCzekzeSr3rzgSTUXRXwNi8bNRoz31D14en9
 
 # * Replace "notechainacc" by your own account name when you start your own project
 
@@ -46,12 +46,12 @@ echo "=== deploy smart contract ==="
 # $3 wallet for unlock the account
 # $4 password for unlocking the wallet
 ./scripts/deploy_contract.sh notechain notechainacc notechainwal $(cat notechain_wallet_password.txt)
-./scripts/deploy_contract.sh participants partacc notechainwal $(cat notechain_wallet_password.txt)
+./scripts/deploy_contract.sh person personacc notechainwal $(cat notechain_wallet_password.txt)
 
 echo "=== create user accounts ==="
 # script for create data into blockchain
 ./scripts/create_accounts.sh
-./scripts/create_participants.sh
+./scripts/create_people.sh
 
 # * Replace the script with different form of data that you would pushed into the blockchain when you start your own project
 
