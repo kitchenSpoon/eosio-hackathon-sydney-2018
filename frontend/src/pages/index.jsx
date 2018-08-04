@@ -109,6 +109,7 @@ class Index extends Component {
 
     console.log(result);
     this.getTable();
+    this.getBalance();
   }
 
   // gets table data from the blockchain
@@ -124,8 +125,36 @@ class Index extends Component {
     }).then(result => this.setState({ noteTable: result.rows }));
   }
 
+  recordCarbonPositiveAction() {
+    // const eos = Eos();
+    // const result = await eos.transaction({
+    //   actions: [{
+    //     account: "notechainacc",
+    //     name: "getCCT",
+    //     authorization: [{
+    //       actor: account,
+    //       permission: 'active',
+    //     }],
+    //     data: actionData,
+    //   }],
+    // });
+  }
+
+  getBalance() {
+    const eos = Eos();
+    eos.getCurrencyBalance({
+      "code": "eosio",
+      "account": accounts[0].name,
+      "symbol": "EOS",
+    }).then(result => {
+      console.log(result);
+      this.setState({ balance: result.rows });
+    });
+  }
+
   componentDidMount() {
     this.getTable();
+    this.getBalance();
   }
 
   render() {
