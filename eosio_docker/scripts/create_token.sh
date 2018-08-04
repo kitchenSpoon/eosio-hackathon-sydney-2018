@@ -5,7 +5,7 @@ cleos create key > token_keys.txt
 MY_PRIVATE_KEY=$(cat token_keys.txt | head -n 1 | awk '{print $3}')
 MY_PUBLIC_KEY=$(cat token_keys.txt | tail -n 1 | awk '{print $3}')
 cleos wallet list
-cleos wallet unlock -n eosiomain < eosiomain_wallet_password.txt
+#cleos wallet unlock -n eosiomain < eosiomain_wallet_password.txt
 cleos create account eosio tokenacct ${MY_PUBLIC_KEY}
 cleos wallet import -n eosiomain --private-key ${MY_PRIVATE_KEY}
 cleos set contract tokenacct contracts/eosio.token -p tokenacct@active
