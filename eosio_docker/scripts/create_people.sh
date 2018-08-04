@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 echo "=== start create people in blockchain ==="
 
 # download jq for json reader, we use jq here for reading the json file ( accounts.json )
-#mkdir -p ~/bin && curl -sSL -o ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && chmod +x ~/bin/jq && export PATH=$PATH:~/bin
+mkdir -p ~/bin && curl -sSL -o ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && chmod +x ~/bin/jq && export PATH=$PATH:~/bin
 
 # loop through the array in the json file, import keys and create accounts
 # these pre-created accounts will be used for saving / erasing notes
