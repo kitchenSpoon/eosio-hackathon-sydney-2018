@@ -198,7 +198,7 @@ class Index extends Component {
             Jack's account balance
           </Typography>
           <Typography className={classes.balance}>
-            100 CCT
+            {balance}
           </Typography>
         </div>
         <ClaimList />
