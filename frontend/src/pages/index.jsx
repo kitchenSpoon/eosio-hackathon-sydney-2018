@@ -26,6 +26,10 @@ const accounts = [
 
 // set up styling classes using material-ui "withStyles"
 const styles = theme => ({
+  balance: {
+    textAlign: 'center',
+    fontSize: 150,
+  },
   card: {
     margin: 20,
   },
@@ -147,11 +151,12 @@ class Index extends Component {
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
-              Note Chain
+              Carbon Credit Token
             </Typography>
           </Toolbar>
         </AppBar>
         {noteCards}
+        <div className={classes.balance}>100 CCT</div>
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>
             <TextField
