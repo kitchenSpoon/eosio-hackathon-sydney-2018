@@ -27,6 +27,15 @@ const accounts = [
 
 // set up styling classes using material-ui "withStyles"
 const styles = theme => ({
+  name: {
+    textAlign: 'center',
+    fontSize: 30,
+    marginTop: 20,
+  },
+  balance: {
+    textAlign: 'center',
+    fontSize: 130,
+  },
   card: {
     margin: 20,
   },
@@ -121,9 +130,84 @@ class Index extends Component {
   }
 
   render() {
+    const { noteTable } = this.state;
+    const { classes } = this.props;
+
+    // generate each note as a card
+    const generateCard = (key, timestamp, user, note) => (
+      <Card className={classes.card} key={key}>
+        <CardContent>
+          <Typography variant="headline" component="h2">
+            {user}
+          </Typography>
+          <Typography style={{fontSize:12}} color="textSecondary" gutterBottom>
+            {new Date(timestamp*1000).toString()}
+          </Typography>
+          <Typography component="pre">
+            {note}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+    let noteCards = noteTable.map((row, i) =>
+      generateCard(i, row.timestamp, row.user, row.note));
+
     return (
       <div>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Carbon Credit Token
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        {noteCards}
+        <Typography className={classes.name}>
+          Jack
+        </Typography>
+        <Typography className={classes.balance}>
+          100 CCT
+        </Typography>
         <ClaimList />
+        {/* <Paper className={classes.paper}>
+          <form onSubmit={this.handleFormEvent}>
+            <TextField
+              name="account"
+              autoComplete="off"
+              label="Account"
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              name="privateKey"
+              autoComplete="off"
+              label="Private key"
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              name="note"
+              autoComplete="off"
+              label="Note (Optional)"
+              margin="normal"
+              multiline
+              rows="10"
+              fullWidth
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.formButton}
+              type="submit">
+              Add / Update note
+            </Button>
+          </form>
+        </Paper>
+        <pre className={classes.pre}>
+          Below is a list of pre-created accounts information for add/update note:
+          <br/><br/>
+          accounts = { JSON.stringify(accounts, null, 2) }
+        </pre> */}
       </div>
     );
   }

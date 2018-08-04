@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 export default class ClaimList extends Component {
     render() {
@@ -9,34 +10,34 @@ export default class ClaimList extends Component {
                     <li style={styles.claim_list_item}>
                         <div style={styles.icon}></div>
                         <div style={styles.content}>
-                            <div style={styles.title}>Train from Epping to Central</div>
-                            <div style={styles.description}>20km 0.02T Carbon Saved</div>
+                            <Typography style={styles.title}>Train from Epping to Central</Typography>
+                            <Typography style={styles.description}>20km 0.02T Carbon Saved</Typography>
                         </div>
-                        <div style={styles.reward}><strong>20</strong>CCT</div>
+                        <Typography style={styles.reward}><strong>20</strong>CCT</Typography>
                         <div style={styles.action}>
-                            <div style={styles.button}>Claim</div>
+                            <Typography style={styles.button}>Claim</Typography>
                         </div>
                     </li>
                     <li style={styles.claim_list_item}>
                         <div style={styles.icon}></div>
                         <div style={styles.content}>
-                            <div style={styles.title}>Bottle refill at starbucks</div>
-                            <div style={styles.description}>17g Carbon Saved</div>
+                            <Typography style={styles.title}>Bottle refill at starbucks</Typography>
+                            <Typography style={styles.description}>17g Carbon Saved</Typography>
                         </div>
-                        <div style={styles.reward}><strong>0.01</strong>CCT</div>
+                        <Typography style={styles.reward}><strong>0.01</strong>CCT</Typography>
                         <div style={styles.action}>
-                            <div style={styles.button}>Claim</div>
+                            <Typography style={styles.button}>Claim</Typography>
                         </div>
                     </li>
                     <li style={styles.claim_list_item}>
                         <div style={styles.icon}></div>
                         <div style={styles.content}>
-                            <div style={styles.title}>Plant tree</div>
-                            <div style={styles.description}>1T Carbon for year</div>
+                            <Typography style={styles.title}>Plant tree</Typography>
+                            <Typography style={styles.description}>1T Carbon for year</Typography>
                         </div>
-                        <div style={styles.reward}><strong>1000</strong>CCT</div>
+                        <Typography style={styles.reward}><strong>1000</strong>CCT</Typography>
                         <div style={styles.action}>
-                            <div style={styles.button}>Claim</div>
+                            <Typography style={styles.button}>Claim</Typography>
                         </div>
                     </li>
                 </ul>
