@@ -39,10 +39,10 @@ export default class ClaimList extends Component {
                             <Typography style={styles.title}>British American Tobacco Australia</Typography>
                             <Typography style={styles.description}></Typography>
                         </div>
-                        <Typography style={styles.reward}>24112</Typography>
+                        <Typography style={styles.reward}>113872</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
 
-                        <Typography style={styles.reward}>$27,077,776</Typography>
+                        <Typography style={styles.reward}>$127,878,256</Typography>
                         <Typography style={styles.unit}>USD</Typography>
                     </li>
 
