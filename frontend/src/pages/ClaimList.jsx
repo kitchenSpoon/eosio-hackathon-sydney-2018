@@ -29,14 +29,13 @@ export default class ClaimList extends Component {
                         </div>
                         <Typography style={styles.reward}>20</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
-
                         <Button
-                            disableRipple={true}
+                            variant={'contained'}
                             onClick={() => onClickClaim('20.0000 CCT')}
+                            fullWidth={true}
+                            style={styles.buttonContainer}
                         >
-                            <div style={styles.action}>
-                                <Typography style={styles.button}>Claim</Typography>
-                            </div>
+                            Claim
                         </Button>
                     </li>
                     <li style={styles.claim_list_item}>
@@ -49,12 +48,12 @@ export default class ClaimList extends Component {
                         <Typography style={styles.reward}>0.01</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
-                            disableRipple={true}
+                            variant={'contained'}
                             onClick={() => onClickClaim('0.0100 CCT')}
+                            fullWidth={true}
+                            style={styles.buttonContainer}
                         >
-                                <div style={styles.action}>
-                                    <Typography style={styles.button}>Claim</Typography>
-                                </div>
+                            Claim
                         </Button>
                     </li>
                     <li style={styles.claim_list_item}>
@@ -67,12 +66,12 @@ export default class ClaimList extends Component {
                         <Typography style={styles.reward}>1000</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
-                            disableRipple={true}
+                            variant={'contained'}
                             onClick={() => onClickClaim('1000.0000 CCT')}
+                            fullWidth={true}
+                            style={styles.buttonContainer}
                         >
-                            <div style={styles.action}>
-                                <Typography style={styles.button}>Claim</Typography>
-                            </div>
+                            Claim
                         </Button>
                     </li>
                 </ul>
@@ -128,6 +127,13 @@ const styles = {
         textAlign: 'center',
         color: '#aaa'
     },
+    buttonContainer: {
+        display: 'flex',
+        padding: '20px',
+        marginTop: '10px',
+        color: 'white',
+        backgroundColor: '#3cc47c',
+    },
     action: {
         marginTop: '20px',
         padding: '20px',
@@ -140,6 +146,7 @@ const styles = {
         textAlign: 'center',
         cursor: 'pointer',
         borderRadius: '3px',
+        display: 'flex',
     },
     trainBG: {
         width: "100%",
