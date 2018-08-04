@@ -33,7 +33,7 @@ const styles = theme => ({
   },
   balance: {
     textAlign: 'center',
-    fontSize: 130,
+    fontSize: 100,
   },
   card: {
     margin: 20,
