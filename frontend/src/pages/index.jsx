@@ -26,9 +26,14 @@ const accounts = [
 
 // set up styling classes using material-ui "withStyles"
 const styles = theme => ({
+  name: {
+    textAlign: 'center',
+    fontSize: 30,
+    marginTop: 20,
+  },
   balance: {
     textAlign: 'center',
-    fontSize: 150,
+    fontSize: 130,
   },
   card: {
     margin: 20,
@@ -156,6 +161,9 @@ class Index extends Component {
           </Toolbar>
         </AppBar>
         {noteCards}
+        <Typography className={classes.name}>
+          Jack
+        </Typography>
         <Typography className={classes.balance}>
           100 CCT
         </Typography>
