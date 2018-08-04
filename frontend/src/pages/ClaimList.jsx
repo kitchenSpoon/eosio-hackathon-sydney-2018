@@ -25,13 +25,13 @@ export default class ClaimList extends Component {
                         <div style={styles.icon}><FontAwesomeIcon icon="bus" /></div>
                         <div style={styles.content}>
                             <Typography style={styles.title}>Train from Epping to Central</Typography>
-                            <Typography style={styles.description}>20km 0.02T Carbon Saved</Typography>
+                            <Typography style={styles.description}>20km 58 CO2 lbs/week Saved</Typography>
                         </div>
-                        <Typography style={styles.reward}>20</Typography>
+                        <Typography style={styles.reward}>58</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
-                            onClick={() => onClickClaim('20.0000 CCT')}
+                            onClick={() => onClickClaim('58.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >
@@ -43,13 +43,13 @@ export default class ClaimList extends Component {
                         <div style={styles.icon}><FontAwesomeIcon icon="recycle" /></div>
                         <div style={styles.content}>
                             <Typography style={styles.title}>Bottle refill at starbucks</Typography>
-                            <Typography style={styles.description}>17g Carbon Saved</Typography>
+                            <Typography style={styles.description}>19g/week Saved</Typography>
                         </div>
-                        <Typography style={styles.reward}>0.01</Typography>
+                        <Typography style={styles.reward}>1</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
-                            onClick={() => onClickClaim('0.0100 CCT')}
+                            onClick={() => onClickClaim('1.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >
@@ -61,13 +61,13 @@ export default class ClaimList extends Component {
                         <div style={styles.icon}><FontAwesomeIcon icon="tree" /></div>
                         <div style={styles.content}>
                             <Typography style={styles.title}>Plant tree</Typography>
-                            <Typography style={styles.description}>1T Carbon for year</Typography>
+                            <Typography style={styles.description}>48 CO2 lbs/year Carbon for year</Typography>
                         </div>
-                        <Typography style={styles.reward}>1000</Typography>
+                        <Typography style={styles.reward}>48</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
-                            onClick={() => onClickClaim('1000.0000 CCT')}
+                            onClick={() => onClickClaim('48.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >

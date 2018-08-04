@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Eos from 'eosjs'; // https://github.com/EOSIO/eosjs
+import CountUp from 'react-countup';
 
 // material-ui dependencies
 import { withStyles } from '@material-ui/core/styles';
@@ -27,6 +28,11 @@ const accounts = [
 
 // set up styling classes using material-ui "withStyles"
 const styles = theme => ({
+  balanceContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+  },
   banner: {
     backgroundColor: '#3cc47c',
     padding: '20px 0 60px',
@@ -42,6 +48,13 @@ const styles = theme => ({
     fontSize: 130,
     color: 'white',
     fontWeight: 300
+  },
+  currency: {
+    textAlign: 'center',
+    fontSize: 130,
+    color: 'white',
+    fontWeight: 300,
+    marginLeft: 20,
   },
   card: {
     margin: 20,
@@ -68,7 +81,9 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      noteTable: [] // to store the table rows from smart contract
+      noteTable: [], // to store the table rows from smart contract
+      prevBalance: '0 CCT',
+      balance: '0 CCT',
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -177,7 +192,10 @@ class Index extends Component {
       "symbol": "CCT",
     }).then(result => {
       console.log(result);
-      this.setState({ balance: result[0] });
+      console.log('this.state.prevBalance', this.state.prevBalance);
+      console.log('this.state.balance', this.state.balance);
+      console.log('this.state.balance', this.state);
+      this.setState({ prevBalance: this.state.balance || '0 CCT', balance: (result[0]) || '0 CCT' });
     });
   }
 
@@ -187,18 +205,27 @@ class Index extends Component {
   }
 
   render() {
-    const { noteTable, balance } = this.state;
+    const { noteTable, prevBalance = '0 CCT', balance = '0 CCT' } = this.state;
     const { classes } = this.props;
+    console.log('render');
+    console.log(prevBalance.substring(0, prevBalance.length-4));
+    console.log(balance.substring(0, balance.length-4));
 
+    const prevValue = prevBalance.substring(0, prevBalance.length-4);
+    const value = balance.substring(0, balance.length-4);
     return (
       <div>
         <div className={classes.banner}>
           <Typography className={classes.name}>
             Jack's account balance
           </Typography>
-          <Typography className={classes.balance}>
+          {/* <Typography className={classes.balance}>
             {balance}
-          </Typography>
+          </Typography> */}
+          <div className={classes.balanceContainer}>
+            <CountUp className={classes.balance} start={prevValue} end={value} duration={2} redraw={true}/>
+            <Typography className={classes.currency}> CCT </Typography>
+          </div>
         </div>
         <ClaimList onClickClaim={(amount) => {
           this.recordCarbonPositiveAction(amount).then(_ => {
