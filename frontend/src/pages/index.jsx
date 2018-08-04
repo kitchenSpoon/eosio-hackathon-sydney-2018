@@ -156,7 +156,9 @@ class Index extends Component {
           </Toolbar>
         </AppBar>
         {noteCards}
-        <div className={classes.balance}>100 CCT</div>
+        <Typography className={classes.balance}>
+          100 CCT
+        </Typography>
         <Paper className={classes.paper}>
           <form onSubmit={this.handleFormEvent}>
             <TextField
