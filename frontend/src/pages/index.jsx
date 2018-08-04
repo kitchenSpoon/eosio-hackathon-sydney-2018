@@ -144,7 +144,7 @@ class Index extends Component {
 
     const eos = Eos({keyProvider: ["5JANTVJ6A3nDsVDVnru4sRhZnHsS9PaJCU45MyFq2j75ZQGhABy"]});
 
-    eos.transaction(
+    return eos.transaction(
       {
         actions: [
           {
@@ -183,7 +183,6 @@ class Index extends Component {
 
   componentDidMount() {
     this.getTable();
-    this.recordCarbonPositiveAction('1.0000 CCT');
     this.getBalance();
   }
 
@@ -201,7 +200,10 @@ class Index extends Component {
             {balance}
           </Typography>
         </div>
-        <ClaimList />
+        <ClaimList onClickClaim={(amount) => {
+          this.recordCarbonPositiveAction(amount).then(_ => {
+            this.getBalance();
+          })}} />
       </div>
     );
   }

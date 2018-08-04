@@ -6,6 +6,7 @@ import ForestBG from '../images/forest.jpg';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBus, faRecycle, faTree } from '@fortawesome/free-solid-svg-icons'
+import { Button } from '../../node_modules/@material-ui/core';
 
 library.add(faBus)
 library.add(faRecycle)
@@ -13,6 +14,9 @@ library.add(faTree)
 
 export default class ClaimList extends Component {
     render() {
+
+        const { onClickClaim } = this.props;
+
         return (
             <div>
                 <ul style={styles.claim_list}>
@@ -25,9 +29,15 @@ export default class ClaimList extends Component {
                         </div>
                         <Typography style={styles.reward}>20</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
-                        <div style={styles.action}>
-                            <Typography style={styles.button}>Claim</Typography>
-                        </div>
+
+                        <Button
+                            disableRipple={true}
+                            onClick={() => onClickClaim('20.0000 CCT')}
+                        >
+                            <div style={styles.action}>
+                                <Typography style={styles.button}>Claim</Typography>
+                            </div>
+                        </Button>
                     </li>
                     <li style={styles.claim_list_item}>
                         <div style={styles.waterBG}></div>
@@ -38,9 +48,14 @@ export default class ClaimList extends Component {
                         </div>
                         <Typography style={styles.reward}>0.01</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
-                        <div style={styles.action}>
-                            <Typography style={styles.button}>Claim</Typography>
-                        </div>
+                        <Button
+                            disableRipple={true}
+                            onClick={() => onClickClaim('0.0100 CCT')}
+                        >
+                                <div style={styles.action}>
+                                    <Typography style={styles.button}>Claim</Typography>
+                                </div>
+                        </Button>
                     </li>
                     <li style={styles.claim_list_item}>
                         <div style={styles.forestBG}></div>
@@ -51,9 +66,14 @@ export default class ClaimList extends Component {
                         </div>
                         <Typography style={styles.reward}>1000</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
-                        <div style={styles.action}>
-                            <Typography style={styles.button}>Claim</Typography>
-                        </div>
+                        <Button
+                            disableRipple={true}
+                            onClick={() => onClickClaim('1000.0000 CCT')}
+                        >
+                            <div style={styles.action}>
+                                <Typography style={styles.button}>Claim</Typography>
+                            </div>
+                        </Button>
                     </li>
                 </ul>
             </div>
@@ -110,7 +130,7 @@ const styles = {
     },
     action: {
         marginTop: '20px',
-        padding: '20px'
+        padding: '20px',
     },
     button: {
         backgroundColor: '#3cc47c',
