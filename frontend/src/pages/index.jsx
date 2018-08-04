@@ -70,6 +70,7 @@ class Index extends Component {
   async handleFormEvent(event) {
     // stop default behaviour
     event.preventDefault();
+    console.log(event);
 
     // collect form data
     let account = event.target.account.value;
@@ -94,22 +95,25 @@ class Index extends Component {
     }
 
     // eosjs function call: connect to the blockchain
-    const eos = Eos({keyProvider: privateKey});
-    const result = await eos.transaction({
-      actions: [{
-        account: "notechainacc",
-        name: actionName,
-        authorization: [{
-          actor: account,
-          permission: 'active',
-        }],
-        data: actionData,
-      }],
-    });
+    console.log('privateKey');
+    // const eos = Eos({keyProvider: ["5JANTVJ6A3nDsVDVnru4sRhZnHsS9PaJCU45MyFq2j75ZQGhABy"]});
+    // const eos = Eos({keyProvider: privateKey});
+    // const result = await eos.transaction({
+    //   actions: [{
+    //     account: "notechainacc",
+    //     name: actionName,
+    //     authorization: [{
+    //       actor: account,
+    //       permission: 'active',
+    //     }],
+    //     data: actionData,
+    //   }],
+    // });
 
-    console.log(result);
-    this.getTable();
-    this.getBalance();
+
+    // console.log(result);
+    // this.getTable();
+    // this.getBalance();
   }
 
   // gets table data from the blockchain
@@ -128,19 +132,33 @@ class Index extends Component {
     });
   }
 
-  recordCarbonPositiveAction() {
-    // const eos = Eos();
-    // const result = await eos.transaction({
-    //   actions: [{
-    //     account: "notechainacc",
-    //     name: "getCCT",
-    //     authorization: [{
-    //       actor: account,
-    //       permission: 'active',
-    //     }],
-    //     data: actionData,
-    //   }],
-    // });
+  recordCarbonPositiveAction(amount) {
+
+    const eos = Eos({keyProvider: ["5JANTVJ6A3nDsVDVnru4sRhZnHsS9PaJCU45MyFq2j75ZQGhABy"]});
+
+    eos.transaction(
+      {
+        actions: [
+          {
+            account: 'tokenacct',
+            name: 'transfer',
+            authorization: [{
+              actor: 'tokenacct',
+              permission: 'active'
+            }],
+            data: {
+              from: 'tokenacct',
+              to: 'personacc',
+              quantity: amount,
+              memo: ''
+            }
+          }
+        ]
+      }
+    ).then(result => {
+      console.log(result);
+      // this.setState({ noteTable: result.rows });
+    });
   }
 
   getBalance() {
@@ -157,6 +175,7 @@ class Index extends Component {
 
   componentDidMount() {
     this.getTable();
+    this.recordCarbonPositiveAction('1.0000 CCT');
     this.getBalance();
   }
 

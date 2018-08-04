@@ -1,9 +1,11 @@
 #!/bin/bash
 set -eux
 
-cleos create key > token_keys.txt
-MY_PRIVATE_KEY=$(cat token_keys.txt | head -n 1 | awk '{print $3}')
-MY_PUBLIC_KEY=$(cat token_keys.txt | tail -n 1 | awk '{print $3}')
+#cleos create key > token_keys.txt
+#MY_PRIVATE_KEY=$(cat token_keys.txt | head -n 1 | awk '{print $3}')
+#MY_PUBLIC_KEY=$(cat token_keys.txt | tail -n 1 | awk '{print $3}')
+MY_PRIVATE_KEY="5JANTVJ6A3nDsVDVnru4sRhZnHsS9PaJCU45MyFq2j75ZQGhABy"
+MY_PUBLIC_KEY="EOS5GN7DMoegRcwNYLXWHXmUrKydoFroLazDdP63xoXvm8gpb4YfA"
 cleos wallet list
 #cleos wallet unlock -n eosiomain < eosiomain_wallet_password.txt
 cleos create account eosio tokenacct ${MY_PUBLIC_KEY}
