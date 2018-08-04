@@ -14,4 +14,4 @@ cleos set contract tokenacct contracts/eosio.token -p tokenacct@active
 
 cleos push action tokenacct create '[ "tokenacct", "1000000000.0000 CCT"]' -p tokenacct
 cleos push action tokenacct issue '[ "tokenacct", "10000000.0000 CCT", "memo" ]' -p tokenacct
-cleos push action tokenacct transfer '[ "tokenacct", "personacc", "25.0000 CCT", "memo2" ]' -p tokenacct
+# cleos push action tokenacct transfer '[ "tokenacct", "personacc", "25.0000 CCT", "memo2" ]' -p tokenacct
