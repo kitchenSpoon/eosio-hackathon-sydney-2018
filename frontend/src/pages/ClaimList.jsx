@@ -45,11 +45,11 @@ export default class ClaimList extends Component {
                             <Typography style={styles.title}>Bottle refill at starbucks</Typography>
                             <Typography style={styles.description}>19g/week Saved</Typography>
                         </div>
-                        <Typography style={styles.reward}>1</Typography>
+                        <Typography style={styles.reward}>19</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
-                            onClick={() => onClickClaim('1.0000 CCT')}
+                            onClick={() => onClickClaim('19.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >
