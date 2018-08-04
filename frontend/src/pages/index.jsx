@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import ClaimList from './ClaimList';
+import Intro from './Intro';
 
 // NEVER store private keys in any source code in your real life development
 // This is for demo purposes only!
@@ -68,7 +69,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      noteTable: [] // to store the table rows from smart contract
+      page: 'intro'
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -140,19 +141,32 @@ class Index extends Component {
     const { noteTable } = this.state;
     const { classes } = this.props;
 
-    return (
-      <div>
-        <div className={classes.banner}>
-          <Typography className={classes.name}>
-            Jack's account balance
-          </Typography>
-          <Typography className={classes.balance}>
-            100 CCT
-          </Typography>
+    const {page} = this.state;
+
+    if (page == 'intro') {
+      return (
+        <Intro onNext={this.onNext} />
+      );
+    } else {
+      return (
+        <div>
+          <div className={classes.banner}>
+            <Typography className={classes.name}>
+              Jack's account balance
+            </Typography>
+            <Typography className={classes.balance}>
+              100 CCT
+            </Typography>
+          </div>
+          <ClaimList />
         </div>
-        <ClaimList />
-      </div>
-    );
+      );
+    }
+    
+  }
+
+  onNext = () => {
+    this.setState({page:'dashboard'});
   }
 
 }
