@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Eos from 'eosjs'; // https://github.com/EOSIO/eosjs
-import CountUp from 'react-countup';
+import CountUp from 'react-countup/build';
 
 // material-ui dependencies
 import { withStyles } from '@material-ui/core/styles';
@@ -13,6 +13,8 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import ClaimList from './ClaimList';
+import Companies from './Companies';
+import OvershootDay from './OvershootDay';
 
 // NEVER store private keys in any source code in your real life development
 // This is for demo purposes only!
@@ -72,6 +74,11 @@ const styles = theme => ({
     background: "#ccc",
     padding: 10,
     marginBottom: 0.
+  },
+  title: {
+    fontSize: 80,
+    textAlign: 'center',
+    marginTop: 30,
   },
 });
 
@@ -231,6 +238,10 @@ class Index extends Component {
           this.recordCarbonPositiveAction(amount).then(_ => {
             this.getBalance();
           })}} />
+
+        <Typography className={classes.title}> Companies </Typography>
+        <Companies/>
+        <OvershootDay/>
       </div>
     );
   }

@@ -6,7 +6,7 @@ import ForestBG from '../images/forest.jpg';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBus, faRecycle, faTree } from '@fortawesome/free-solid-svg-icons'
-import { Button } from '../../node_modules/@material-ui/core';
+import { Button } from '@material-ui/core';
 
 library.add(faBus)
 library.add(faRecycle)
@@ -93,7 +93,7 @@ const styles = {
         margin: '30px 30px',
         borderRadius: '10px',
         boxShadow: '0 3px 20px rgba(0, 0, 0, 0.2)',
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     icon: {
         display: 'inline-block',
@@ -125,7 +125,8 @@ const styles = {
     },
     unit: {
         textAlign: 'center',
-        color: '#aaa'
+        color: '#aaa',
+        marginBottom: 20,
     },
     buttonContainer: {
         display: 'flex',
