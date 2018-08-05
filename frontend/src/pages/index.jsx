@@ -254,7 +254,7 @@ class Index extends Component {
 
         <div className={classes.banner}>
         <Typography className={classes.name}>
-            CryptoCarrot
+            CarbonCarrot
           </Typography>
           <Typography className={classes.name}>
             Jack's account balance
