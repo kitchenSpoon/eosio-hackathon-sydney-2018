@@ -68,7 +68,7 @@ export default class ClaimList extends Component {
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
-                            onClick={() => onClickClaim('58.0000 CCT')}
+                            onClick={() => onClickClaim('168.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >
