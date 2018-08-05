@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import TrainBG from '../images/train.jpg';
+import AirCondition from '../images/airCondition.jpg';
 import WaterBG from '../images/water.jpg';
 import ForestBG from '../images/forest.jpg';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -20,25 +21,7 @@ export default class ClaimList extends Component {
         return (
             <div>
                 <ul style={styles.claim_list}>
-                    <li style={styles.claim_list_item}>
-                        <div style={styles.trainBG}></div>
-                        <div style={styles.icon}><FontAwesomeIcon icon="bus" /></div>
-                        <div style={styles.content}>
-                            <Typography style={styles.title}>Train from Epping to Central</Typography>
-                            <Typography style={styles.description}>20km 58 CO2 lbs/week Saved</Typography>
-                        </div>
-                        <Typography style={styles.reward}>58</Typography>
-                        <Typography style={styles.unit}>CCT</Typography>
-                        <Button
-                            variant={'contained'}
-                            onClick={() => onClickClaim('58.0000 CCT')}
-                            fullWidth={true}
-                            style={styles.buttonContainer}
-                        >
-                            Claim
-                        </Button>
-                    </li>
-                    <li style={styles.claim_list_item}>
+                <li style={styles.claim_list_item}>
                         <div style={styles.waterBG}></div>
                         <div style={styles.icon}><FontAwesomeIcon icon="recycle" /></div>
                         <div style={styles.content}>
@@ -68,6 +51,24 @@ export default class ClaimList extends Component {
                         <Button
                             variant={'contained'}
                             onClick={() => onClickClaim('48.0000 CCT')}
+                            fullWidth={true}
+                            style={styles.buttonContainer}
+                        >
+                            Claim
+                        </Button>
+                    </li>
+                    <li style={styles.claim_list_item}>
+                        <div style={styles.airConditionBG}></div>
+                        <div style={styles.icon}><FontAwesomeIcon icon="bus" /></div>
+                        <div style={styles.content}>
+                            <Typography style={styles.title}>Using less electricity</Typography>
+                            <Typography style={styles.description}>58 CO2 lbs/week Saved</Typography>
+                        </div>
+                        <Typography style={styles.reward}>58</Typography>
+                        <Typography style={styles.unit}>CCT</Typography>
+                        <Button
+                            variant={'contained'}
+                            onClick={() => onClickClaim('58.0000 CCT')}
                             fullWidth={true}
                             style={styles.buttonContainer}
                         >
@@ -149,10 +150,10 @@ const styles = {
         borderRadius: '3px',
         display: 'flex',
     },
-    trainBG: {
+    airConditionBG: {
         width: "100%",
         height: "200px",
-        background: `url(${TrainBG}) no-repeat center`,
+        background: `url(${AirCondition}) no-repeat center`,
         backgroundSize: '400px 232px'
     },
     waterBG: {

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import SmokeStack from '../images/smokestack.jpg';
 import TrainBG from '../images/train.jpg';
-import Tobacco from '../images/tobacco.jpg';
+import Trucks from '../images/trucks.jpg';
 import ForestBG from '../images/forest.jpg';
+import CarbonCarrotsFlow from '../images/carbonCarrotsFlow.png';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBus, faRecycle, faTree } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +25,7 @@ export default class ClaimList extends Component {
                     <li style={styles.claim_list_item}>
                         <div style={styles.smokeStackBG}></div>
                         <div style={styles.content}>
-                            <Typography style={styles.title}>BHP</Typography>
+                            <Typography style={styles.title}>Factory A</Typography>
                             <Typography style={styles.description}></Typography>
                         </div>
                         <Typography style={styles.reward}>58112</Typography>
@@ -34,9 +35,9 @@ export default class ClaimList extends Component {
                         <Typography style={styles.unit}>USD</Typography>
                     </li>
                     <li style={styles.claim_list_item}>
-                        <div style={styles.tobaccoBG}></div>
+                        <div style={styles.trucksBG}></div>
                         <div style={styles.content}>
-                            <Typography style={styles.title}>British American Tobacco Australia</Typography>
+                            <Typography style={styles.title}>Transportation Companies</Typography>
                             <Typography style={styles.description}></Typography>
                         </div>
                         <Typography style={styles.reward}>113872</Typography>
@@ -47,6 +48,8 @@ export default class ClaimList extends Component {
                     </li>
 
                 </ul>
+
+                <div style={styles.flowChart}></div>
             </div>
         )
     }
@@ -127,16 +130,24 @@ const styles = {
         background: `url(${SmokeStack}) no-repeat center`,
         backgroundSize: '570px 250px'
     },
-    tobaccoBG: {
+    trucksBG: {
         width: "100%",
         height: "200px",
-        background: `url(${Tobacco}) no-repeat center`,
-        backgroundSize: '600px 400px'
+        background: `url(${Trucks}) no-repeat center`,
+        backgroundSize: '600px 300px'
     },
     forestBG: {
         width: "100%",
         height: "200px",
         background: `url(${ForestBG}) no-repeat center`,
         backgroundSize: '400px 267px'
-    }
+    },
+    flowChart: {
+        width: "100%",
+        height: "600px",
+        background: `url(${CarbonCarrotsFlow}) no-repeat center`,
+        backgroundSize: '900px 600px',
+        marginBottom: 100,
+        marginTop: 100,
+    },
 }
