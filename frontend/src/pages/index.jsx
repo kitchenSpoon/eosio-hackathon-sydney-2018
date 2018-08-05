@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import ClaimList from './ClaimList';
 import Companies from './Companies';
 import OvershootDay from './OvershootDay';
+import CarbonCarrots from '../images/carbonCarrots.png';
 
 // NEVER store private keys in any source code in your real life development
 // This is for demo purposes only!
@@ -80,10 +81,20 @@ const styles = theme => ({
     textAlign: 'center',
     marginTop: 30,
   },
+  carbonCarrots: {
+    width: "100%",
+    height: "300px",
+    background: `url(${CarbonCarrots}) no-repeat center`,
+    backgroundSize: '500px 300px',
+    display: 'flex',
+    listStyle: 'none',
+  },
 });
 
 // Index component
 class Index extends Component {
+
+  timerID;
 
   constructor(props) {
     super(props)
@@ -91,6 +102,8 @@ class Index extends Component {
       noteTable: [], // to store the table rows from smart contract
       prevBalance: '0 CCT',
       balance: '0 CCT',
+      companyAValue: 58112,
+      companyBValue: 113872,
     };
     this.handleFormEvent = this.handleFormEvent.bind(this);
   }
@@ -209,7 +222,15 @@ class Index extends Component {
   componentDidMount() {
     this.getTable();
     this.getBalance();
+    this.timerID = setInterval(
+      () => this.setState({companyAValue: this.state.companyAValue - 3, companyBValue: this.state.companyBValue - 7}),
+      1000
+    );
   }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+}
 
   render() {
     const { noteTable, prevBalance = '0 CCT', balance = '0 CCT' } = this.state;
@@ -221,16 +242,23 @@ class Index extends Component {
     const prevValue = prevBalance.substring(0, prevBalance.length-4);
     const value = balance.substring(0, balance.length-4);
     return (
+
+      // <div>
+      // <div style={styles.carbonCarrots}></div>
+      // </div>
       <div>
+
+          {/* <div>
+            <div style={styles.carbonCarrots}></div>
+          </div> */}
+          <div style={styles.carbonCarrots}></div>
         <div className={classes.banner}>
           <Typography className={classes.name}>
             Jack's account balance
           </Typography>
-          {/* <Typography className={classes.balance}>
-            {balance}
-          </Typography> */}
+
           <div className={classes.balanceContainer}>
-            <CountUp className={classes.balance} start={prevValue} end={value} duration={2} redraw={true}/>
+            <CountUp className={classes.balance} start={prevValue} end={value} duration={2}/>
             <Typography className={classes.currency}> CCT </Typography>
           </div>
         </div>
@@ -240,7 +268,7 @@ class Index extends Component {
           })}} />
 
         <Typography className={classes.title}> Companies </Typography>
-        <Companies/>
+        <Companies companyAValue={this.state.companyAValue} companyBValue={this.state.companyBValue}/>
         <OvershootDay/>
       </div>
     );

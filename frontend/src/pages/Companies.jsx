@@ -17,7 +17,7 @@ library.add(faTree)
 export default class ClaimList extends Component {
     render() {
 
-        const { onClickClaim } = this.props;
+        const { onClickClaim, companyAValue, companyBValue } = this.props;
 
         return (
             <div>
@@ -28,7 +28,7 @@ export default class ClaimList extends Component {
                             <Typography style={styles.title}>Factory A</Typography>
                             <Typography style={styles.description}></Typography>
                         </div>
-                        <Typography style={styles.reward}>58112</Typography>
+                        <Typography style={styles.reward}>{companyAValue}</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
 
                         <Typography style={styles.reward}>$65,259,776</Typography>
@@ -40,7 +40,7 @@ export default class ClaimList extends Component {
                             <Typography style={styles.title}>Transportation Companies</Typography>
                             <Typography style={styles.description}></Typography>
                         </div>
-                        <Typography style={styles.reward}>113872</Typography>
+                        <Typography style={styles.reward}>{companyBValue}</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
 
                         <Typography style={styles.reward}>$127,878,256</Typography>
