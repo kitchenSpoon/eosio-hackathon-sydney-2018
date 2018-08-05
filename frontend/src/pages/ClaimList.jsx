@@ -44,7 +44,7 @@ export default class ClaimList extends Component {
                         <div style={styles.icon}><FontAwesomeIcon icon="tree" /></div>
                         <div style={styles.content}>
                             <Typography style={styles.title}>Plant tree</Typography>
-                            <Typography style={styles.description}>48 CO2 lbs/year Carbon for year</Typography>
+                            <Typography style={styles.description}>48 CO2 lbs/year per year</Typography>
                         </div>
                         <Typography style={styles.reward}>48</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
