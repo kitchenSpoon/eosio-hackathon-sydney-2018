@@ -62,9 +62,9 @@ export default class ClaimList extends Component {
                         <div style={styles.icon}><FontAwesomeIcon icon="bus" /></div>
                         <div style={styles.content}>
                             <Typography style={styles.title}>Using less electricity</Typography>
-                            <Typography style={styles.description}>58 CO2 lbs/week Saved</Typography>
+                            <Typography style={styles.description}>168 CO2 kg/week Saved</Typography>
                         </div>
-                        <Typography style={styles.reward}>58</Typography>
+                        <Typography style={styles.reward}>168</Typography>
                         <Typography style={styles.unit}>CCT</Typography>
                         <Button
                             variant={'contained'}
