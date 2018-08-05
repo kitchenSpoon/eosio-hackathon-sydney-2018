@@ -251,8 +251,11 @@ class Index extends Component {
           {/* <div>
             <div style={styles.carbonCarrots}></div>
           </div> */}
-          <div style={styles.carbonCarrots}></div>
+
         <div className={classes.banner}>
+        <Typography className={classes.name}>
+            CryptoCarrot
+          </Typography>
           <Typography className={classes.name}>
             Jack's account balance
           </Typography>
